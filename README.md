@@ -32,5 +32,4 @@ Compared to existing solutions, our proposed product is highly customizable and 
 [Gantt Chart](https://docs.google.com/spreadsheets/d/1wwYvBDhA1BQncHgGeZM8kFhjlqQpZMWWWALKRnebNus/edit?usp=sharing)
 
 ## Weekly Reports
-Nothing here yet
-
+TODO
