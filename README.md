@@ -1,19 +1,6 @@
 # Pet++
 Remote Automated Pet Monitoring and Training
 
-## Team Members
-- Justin Morris
-  - Hardware and sensor setup
-  - Testing/Demo
-  - Management of Project
-    - Research into new ideas / help with implementations
-
-- Brendon Chen
-  - Communication between devices
-
-- Minh Tran Quoc
-  - Sensor Processing
-
 ## Motivation
 Most people that have raised pets know that the key to successfully training them is consistency. That is, using the same clear voice commands every time your pet does the action associated with the command. However, most pet owners do not have the luxury of being with their pets 24/7. Therefore, there are times when the pet is on their own, acting on their impulses, often slowing down the training process. For instance, say you are training your dog to stay off the couch. When you are there with them, you can easily tell them “off” when they go on the couch. You can also easily reward them for not going on the couch, reinforcing the training. However, when you go off to work, your pet is on their own and they might find the couch comfier than their bed. Therefore, there is no one there to continue the consistent training and the pet gets mixed signals about the couch. This significantly slows down or outright prevents the pet from learning that they are not allowed on the couch. We are proposing a solution to this problem, remote automated pet training and monitoring.
 
@@ -28,10 +15,22 @@ Compared to existing solutions, our proposed product is highly customizable and 
 | :---: |
 | Overview of how the automated pet monitoring and training system communicates data |
 
+## Team Members
+- Justin Morris
+  - Hardware and sensor setup
+  - Testing/Demo
+  - Management of Project
+    - Research into new ideas / help with implementations
+
+- Brendon Chen
+  - Communication between devices
+
+- Minh Tran Quoc
+  - Sensor Processing
+
 ## Project Milestones and Schedule
 [Gantt Chart](https://docs.google.com/spreadsheets/d/1wwYvBDhA1BQncHgGeZM8kFhjlqQpZMWWWALKRnebNus/edit?usp=sharing)
 
-
 ## Weekly Reports
-TODO
+Nothing here yet
 
