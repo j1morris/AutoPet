@@ -24,7 +24,9 @@ Going back to the couch example, a user could add a camera sensor to the system 
 
 Compared to existing solutions, our proposed product is highly customizable and expandable rather than a specific one use product with zero expandability. We also offer automation. Existing solutions allow users to simply monitor their pet, manually interact with them through a speaker, and dispense a treat [1].
 
-![Overview of how the automated pet monitoring and training system communicates data](https://github.com/j1morris/AutoPet/blob/master/overview.png)
+| ![Overview of how the automated pet monitoring and training system communicates data](https://github.com/j1morris/AutoPet/blob/master/overview.png) |
+| :---: |
+| Overview of how the automated pet monitoring and training system communicates data |
 
 ## Project Milestones and Schedule
 [Gantt Chart](https://docs.google.com/spreadsheets/d/1wwYvBDhA1BQncHgGeZM8kFhjlqQpZMWWWALKRnebNus/edit?usp=sharing)
