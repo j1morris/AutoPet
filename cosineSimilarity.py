@@ -5,25 +5,13 @@ from matplotlib import pyplot as plt
 # Paths to the images
 NEG_PATH = "./data/negSamples/"
 POS_PATH = "./data/posSamples/"
-NEG0     = "./data/negSamples/sample0.jpg"
+NEG_REF  = "./data/negSamples/sample0.jpg"
 
-def calculate(fn1, fn2):
-    # Read the images
-    img1 = cv2.imread(fn1)
-    img2 = cv2.imread(fn2)
 
-    img1 = img1[300:600,100:1000]
-    img2 = img2[300:600,100:1000]
-
-    # cv2.imwrite("1.jpg", img1)
-    # cv2.imwrite("2.jpg", img2)
-
+def calculate (img1, img2):
     # Convert to gray
     img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
     img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
-
-    # cv2.imwrite("1.jpg", img1)
-    # cv2.imwrite("2.jpg", img2)
 
     # Flatten the 2-D arrays
     img1 = img1.flatten()
@@ -40,17 +28,33 @@ def calculate(fn1, fn2):
 
     return (numerator / denominator)
 
+
 if __name__ == "__main__":
 
     neg_sim = []
     pos_sim = []
 
-    for i in range(25):
-        neg_sim.append(calculate(NEG0, NEG_PATH + "sample" + str(i) + ".jpg"))
+    # Open and crop
+    neg_ref = cv2.imread(NEG_REF)
+    neg_ref = neg_ref[300:600,100:1000]
 
     for i in range(25):
-        pos_sim.append(calculate(NEG0, POS_PATH + "sample" + str(i) + ".jpg"))
 
+        # Open and crop
+        img2 = cv2.imread(NEG_PATH + "sample" + str(i) + ".jpg")
+        img2 = img2[300:600,100:1000]
+
+        neg_sim.append(calculate(neg_ref, img2))
+
+    for i in range(25):
+
+        # Open and crop
+        img2 = cv2.imread(POS_PATH + "sample" + str(i) + ".jpg")
+        img2 = img2[300:600,100:1000]
+
+        pos_sim.append(calculate(neg_ref, img2))
+
+    # Graph distribution of similarity values
     bins = np.linspace(0.8, 1.1, 300)
 
     plt.hist(neg_sim, bins, alpha=0.5, label='negative similarities')
