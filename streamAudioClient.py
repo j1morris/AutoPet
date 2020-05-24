@@ -15,8 +15,7 @@ p = pyaudio.PyAudio()
 stream = p.open(format=FORMAT,
                 channels=CHANNELS,
                 rate=RATE,
-                input=True,
-                frames_per_buffer=CHUNK)
+                input=True)
 
 #sd.play(stream, RATE)
 
