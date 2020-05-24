@@ -25,5 +25,4 @@ with socket.socket() as client_socket:
     client_socket.connect((HOST, PORT))
     while True:
         data = stream.read(CHUNK)
-        print(data)
         client_socket.send(data)
