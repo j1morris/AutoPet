@@ -11,7 +11,7 @@ chunk = 1024
 ************************************************************************
 '''
 # open the file for reading.
-wf = wave.open('/home/pi/Downloads/file_example_WAV_1MG.wav', 'rb')
+wf = wave.open('test.wav', 'rb')
 
 # create an audio object
 p = pyaudio.PyAudio()
