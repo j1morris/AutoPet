@@ -11,7 +11,6 @@ CHUNK = 1024 * 4
 FORMAT = pyaudio.paInt16
 CHANNELS = 2
 RATE = 44100
-RECORD_SECONDS = 3
 stream = p.open(format=FORMAT,
                 channels=CHANNELS,
                 rate=RATE,
