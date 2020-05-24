@@ -3,7 +3,7 @@ import pyaudio
 import sounddevice as sd
 
 # Socket
-HOST = 'mustin.workisboring.com'
+HOST = socket.gethostbyname('mustin.workisboring.com')
 PORT = 5000
 
 # Audio
