@@ -2,7 +2,7 @@ import socket
 import pyaudio
 
 # Socket
-HOST = socket.gethostbyname('mustin.workisboring.com')
+HOST = '192.168.20.10'
 PORT = 5000
 
 # Audio

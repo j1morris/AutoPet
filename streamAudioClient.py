@@ -6,6 +6,9 @@ import sounddevice as sd
 HOST = socket.gethostbyname('mustin.workisboring.com')
 PORT = 5000
 
+print(HOST)
+exit()
+
 # Audio
 CHUNK = 1024 * 4
 FORMAT = pyaudio.paInt16
