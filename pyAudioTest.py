@@ -17,11 +17,14 @@ wf = wave.open('/home/pi/Downloads/file_example_WAV_1MG.wav', 'rb')
 p = pyaudio.PyAudio()
 
 # open stream based on the wave object which has been input.
+print('here 1')
 stream = p.open(format =
                 p.get_format_from_width(wf.getsampwidth()),
                 channels = wf.getnchannels(),
                 rate = wf.getframerate(),
-                output = True)
+                output = True,
+                output_device_index=2)
+print('here 2')
 
 # read data (based on the chunk size)
 data = wf.readframes(chunk)
