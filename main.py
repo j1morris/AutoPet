@@ -3,11 +3,16 @@ import time
 
 from detectPet import *
 
+TM_BETWEEN_SOUNDS = 60
+
 def debug(msg):
-    print("[MAIN] " + str(msg))
+    print("[ MAIN ] " + str(msg))
 
 
 def main():
+
+    prev_detected = False
+    prev_time = 0
 
     debug("ENTERING MAIN")
     camera = CameraSensorDriver( source="http://192.168.20.11:8080/stream/video.mjpeg"
@@ -17,9 +22,7 @@ def main():
                                , threshold=0.97
                                )
 
-    # speaker = SpeakerDriver( destination="C0:28:8D:7F:37:C1"
-    #                        , sound="/home/pi/Downloads/file_example_WAV_1MG.wav"
-    #                        )
+    speaker = SpeakerDriver( destination="C0:28:8D:7F:37:C1" )
 
     debug("BEFORE WHILE")
     while True:
@@ -28,12 +31,28 @@ def main():
         detected = camera.detect()
         debug(detected)
 
-        # if detected:
+        if detected:
 
-        #     # Scream at the pet
-        #     speaker.play()
+            curr_time = time.time()
+            if curr_time - prev_time > TM_BETWEEN_SOUNDS:
 
-        time.sleep(1)
+                # Scream at the pet
+                debug("GetOff.wav")
+                speaker.play("/home/pi/Downloads/GetOff.wav")
+                prev_time = curr_time
+
+        else:
+            prev_time = 0
+
+        if prev_detected and not detected:
+
+            debug("GoodBoy.wav")
+            speaker.play("/home/pi/Downloads/GoodBoy.wav")
+
+        prev_detected = detected
+
+        time.sleep(2)
+        # input("Press <enter> to continue")
 
 
 if __name__ == "__main__":
