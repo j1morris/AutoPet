@@ -15,7 +15,8 @@ stream = p.open(format=FORMAT,
                 channels=CHANNELS,
                 rate=RATE,
                 output=True,
-                frames_per_buffer=CHUNK)
+                frames_per_buffer=CHUNK,
+                output_device_index=2)
 
 with socket.socket() as server_socket:
     server_socket.bind((HOST, PORT))
