@@ -27,6 +27,7 @@ with socket.socket() as server_socket:
     data = conn.recv(4096)
     while data != "":
         data = conn.recv(4096)
+        print(data)
         stream.write(data)
 
 stream.stop_stream()
