@@ -3,9 +3,10 @@ console.log('Hello world!');
 // https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON
 
 const statsDiv = document.querySelector('#statistics');
+const statsTable = document.querySelector('#tstatistics');
 
-// let requestURL = 'http://mustin.workisboring.com:5000/sample.json';
-let requestURL = 'http://mustin.workisboring.com:5000/stats.json';
+// let requestURL = 'http://mustin.workisboring.com:5001/sample.json';
+let requestURL = 'http://mustin.workisboring.com:5001/stats.json';
 let request = new XMLHttpRequest();
 request.open('GET', requestURL);
 request.responseType = 'json';
@@ -21,9 +22,29 @@ function populateStatistics(jsonObj) {
   let detected   = jsonObj['detected'];
 
   for (let i = 0; i < similarity.length; i++) {
-    const statsPara = document.createElement('p');
-    statsPara.textContent = `${similarity[i]}, ${refid[i]}, ${detected[i]}`;
-    statsDiv.appendChild(statsPara);
+    // const statsPara = document.createElement('p');
+    // statsPara.textContent = `${i}, ${similarity[i]}, ${refid[i]}, ${detected[i]}`;
+    // statsDiv.appendChild(statsPara);
+
+    const statsRow = document.createElement('tr');
+    const id = document.createElement('th');
+    const sim = document.createElement('td');
+    const ref = document.createElement('td');
+    const det = document.createElement('td');
+
+    id.textContent = i + 1;
+    id.scope = "row";
+
+    sim.textContent = similarity[i];
+    ref.textContent = refid[i];
+    det.textContent = detected[i];
+
+    statsRow.appendChild(id);
+    statsRow.appendChild(sim);
+    statsRow.appendChild(ref);
+    statsRow.appendChild(det);
+
+    statsTable.appendChild(statsRow);
   }
 
   // const statsPara = document.createElement('p');

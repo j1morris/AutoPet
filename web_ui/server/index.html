@@ -9,6 +9,38 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <title>Pet++</title>
+
+    <!-- Voodoo Magic -->
+    <!--
+    <style>
+      #wrap {
+        width: 100%;
+        height: 648px;
+        padding: 0;
+        overflow: hidden;
+      }
+      #scaled-frame {
+        width: 1920px;
+        height: 1080px;
+        border: 0px;
+      }
+      #scaled-frame {
+        zoom: 0.6;
+        -moz-transform: scale(0.6);
+        -moz-transform-origin: 0 0;
+        -o-transform: scale(0.6);
+        -o-transform-origin: 0 0;
+        -webkit-transform: scale(0.6);
+        -webkit-transform-origin: 0 0;
+      }
+      @media screen and (-webkit-min-device-pixel-ratio:0) {
+        #scaled-frame {
+          zoom: 1;
+        }
+      }
+    </style>
+    -->
+
   </head>
   <body>
 
@@ -19,7 +51,14 @@
 
     <div class="container">
       <div class="row">
-        <iframe src="http://kastner.ucsd.edu/ryan/cse145/" width="100%" height="500"></iframe>
+        <!-- <iframe src="http://kastner.ucsd.edu/ryan/cse145/" width="100%" height="500"></iframe> -->
+        <!-- <iframe src="http://192.168.20.11:8080/stream/video.mjpeg" width="100%" height="500"></iframe> -->
+        <!--
+        <div id="wrap">
+            <iframe id="scaled-frame" src="http://192.168.20.11:8080/stream/video.mjpeg"></iframe>
+        </div>
+        -->
+        <video src="http://192.168.20.11:8080/stream/video.mjpeg" width="100%"></video>
       </div>
 
       <div class="row">
@@ -28,8 +67,23 @@
            <button type="button" class="btn btn-primary" id="record">Talk</button>
            <button type="button" class="btn btn-primary" id="stop">Stop</button>
          </div>
-         <div class="col-sm-8" style="background-color:cyan" id="statistics">
+
+         <div class="col-sm-8" style="background-color:#e9ecef" id="statistics">
            <h3>Statistics</h3>
+
+           <table class="table">
+             <thead>
+               <tr>
+                 <th scope="col">frame</th>
+                 <th scope="col">similarity</th>
+                 <th scope="col">refid</th>
+                 <th scope="col">detected</th>
+               </tr>
+             </thead>
+             <tbody id="tstatistics">
+             </tbody>
+           </table>
+
          </div>
       </div>
 
