@@ -18,7 +18,7 @@ class CameraSensorDriver(SensorDriver):
         self.device.open(source)
         (self.top, self.left), (self.bottom, self.right) = crop
         self.threshold = threshold
-        self.frameid = 0
+        self.frameid = 1
 
         # Capture initial frame for referrence
         ret, frame = self.device.read()
@@ -52,20 +52,19 @@ class CameraSensorDriver(SensorDriver):
 
         print("[CAMERA] similarity = {}, threshold = {}, result = {}".format(similarity, self.threshold, detected))
 
-
         # Book keeping
-        self.frameid += 1
         self.stats['similarity'].append(similarity)
+        self.stats['refid'].append(self.refid)
         self.stats['detected'].append(1 if detected else 0)
+        self.saveFrame(resized)
 
         # Update reference if needed
         if not detected:
             self.reference = current
             self.refid = self.frameid
-        
-        # Book keeping continue'ed
-        self.stats['refid'].append(self.refid)
-        self.saveFrame(resized)
+
+        # Update the frameid for the next frame
+        self.frameid += 1
 
         return detected
 
@@ -79,6 +78,10 @@ class CameraSensorDriver(SensorDriver):
 
     def saveStats(self):
         with open('./data/savedFrames_{}/stats.json'.format(self.date_time), 'w') as f:
+            json.dump(self.stats, f, indent=4)
+
+        # Save a copy to the server folder
+        with open('./web_ui/server/stats.json', 'w') as f:
             json.dump(self.stats, f, indent=4)
 
 class SpeakerDriver:
