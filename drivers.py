@@ -1,8 +1,9 @@
-from cosineSimilarity import calculate as cosine
 import os
 import json
 import cv2
 from datetime import datetime
+
+from calculateSimilarity import cosine, segmenting
 
 class SensorDriver:
     def __init__():
@@ -48,6 +49,7 @@ class CameraSensorDriver(SensorDriver):
 
         # Calculate cosine similarity
         similarity = cosine(self.reference, current)
+        # similarity = segmenting(self.reference, current, 4)
         detected = similarity < self.threshold
 
         print("[CAMERA] similarity = {}, threshold = {}, result = {}".format(similarity, self.threshold, detected))
@@ -93,5 +95,3 @@ class SpeakerDriver:
     def play(self, sound):
         self.command = "aplay -D bluealsa:DEV={} {}".format(self.destination, sound)
         os.system(self.command)
-
-

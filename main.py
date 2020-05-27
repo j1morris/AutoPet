@@ -1,7 +1,7 @@
 import os
 import time
 
-from detectPet import *
+from drivers import *
 
 TM_BETWEEN_SOUNDS = 60
 
