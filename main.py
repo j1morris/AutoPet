@@ -4,6 +4,7 @@ import time
 from drivers import *
 
 TM_BETWEEN_SOUNDS = 60
+MAX_ATTEMPTS = 5
 
 def debug(msg):
     print("[ MAIN ] " + str(msg))
@@ -13,6 +14,7 @@ def main():
 
     prev_detected = False
     prev_time = 0
+    num_attempts = 0
 
     debug("ENTERING MAIN")
     camera = CameraSensorDriver( source="http://192.168.20.11:8080/stream/video.mjpeg"
@@ -36,13 +38,19 @@ def main():
             curr_time = time.time()
             if curr_time - prev_time > TM_BETWEEN_SOUNDS:
 
-                # Scream at the pet
-                debug("GetOff.wav")
-                speaker.play("/home/pi/Downloads/GetOff.wav")
-                prev_time = curr_time
+                # Only try the voice command a set number of times
+                if num_attempts < MAX_ATTEMPTS:
+
+                  # Scream at the pet
+                  debug("GetOff.wav")
+                  speaker.play("/home/pi/Downloads/GetOff.wav")
+                  prev_time = curr_time
+
+                  num_attempts = num_attempts + 1
 
         else:
             prev_time = 0
+            num_attempts = 0
 
         if prev_detected and not detected:
 
